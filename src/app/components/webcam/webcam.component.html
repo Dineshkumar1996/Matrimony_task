@@ -1,0 +1,8 @@
+<div *ngIf="!cameraHidden" class="mb-2 text-center">
+    <webcam [height]="250" [width]="250" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+        [videoOptions]="videoOptions" [imageQuality]="1" (initError)="handleInitError($event)"></webcam>
+    <br />
+    <button class="actionBtn btn btn-warning" (click)="triggerSnapshot()">
+        Capture
+    </button>
+</div>

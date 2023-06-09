@@ -1,0 +1,61 @@
+<div>
+  <p>
+    <mat-toolbar color="warn">
+      <button mat-icon-button>
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span class="global-font pl-1">Manage Photos</span>
+    </mat-toolbar>
+  </p>
+</div>
+<div>
+  <ng-container *ngIf="images.length == 0; else with_photo">
+    <p class="description">
+      Photos are the first thing members will look in your profile. Add multiple
+      photos to get more matches.
+    </p>
+  </ng-container>
+  <ng-template #with_photo>
+    <p class="description">
+      Drag photos to reorder. First photo will be displayed as profile photo
+    </p>
+  </ng-template>
+</div>
+<div class="image-section">
+  <div class="image-container">
+    <mat-card class="image-card" (click)="openBottomSheet()" *ngIf="images.length == 0">
+      <mat-card-content>
+        <mat-icon class="blue-arrow">add_circle</mat-icon>
+      </mat-card-content>
+      <mat-card-actions class="card-action">
+        <p class="card-button">Add Photo</p>
+      </mat-card-actions>
+    </mat-card>
+
+    <ng-container *ngFor="let item of images; let i = index">
+      <mat-card class="image-card card-close" [ngClass]="i == 0 ? 'profile-card' : ''" *ngIf="item">
+        <div class="profile-photo-container" *ngIf="i == 0">
+          <p class="profile-photo-content">Profile Photo</p>
+        </div>
+        <button mat-icon-button aria-label="close dialog" class="remove-button" mat-dialog-close
+          (click)="clearImageSelected(i)">
+          <mat-icon class="close-icon">close</mat-icon>
+        </button>
+        <img mat-card-image src="{{ item }}" alt="CapturedImage" class="images" />
+      </mat-card>
+    </ng-container>
+  </div>
+</div>
+
+<footer class="footer-button">
+  <ng-container *ngIf="images.length < 6; else without_button">
+    <button class="btn btn-primary btn-add-photos" (click)="openBottomSheet()">
+      Add Photos
+    </button>
+  </ng-container>
+  <ng-template #without_button>
+    <p class="description">
+      You can't able to select more than 6 photos
+    </p>
+  </ng-template>
+</footer>

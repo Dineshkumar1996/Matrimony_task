@@ -1,0 +1,23 @@
+<p style="font-size: 24px">ADD PHOTOS</p>
+<mat-nav-list>
+
+  <a mat-list-item>
+    <button #buttonPicker="appFilePicker" class="file-picker-button" appFilePicker
+      (filesChanged)="_onFilesChanged($event)">
+      <span matListItemTitle>Upload from gallery</span>
+    </button>
+  </a>
+
+  <a mat-list-item (click)="openLink($event);openCamera()">
+    <span matListItemTitle>Take a Photo</span>
+  </a>
+
+  <a href="https://wa.me/919999999999" target="_blank" mat-list-item (click)="openLink($event)">
+    <span matListItemTitle>Whatsapp your photos to us @</span>
+    <span matLine>+91 9xxxx xxxxx</span>
+  </a>
+
+  <!-- Copyright 2023 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at https://angular.io/license -->
+</mat-nav-list>

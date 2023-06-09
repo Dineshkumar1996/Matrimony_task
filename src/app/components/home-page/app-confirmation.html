@@ -1,0 +1,8 @@
+<h1 mat-dialog-title class="confirmation-title">Delete Photo</h1>
+<div mat-dialog-content>
+    <p>Members with multiple photos get better responses. Do you still want to delete this photo?</p>
+    <div class="text-end">
+        <button class="confirmation-button" (click)="RemoveImageHandler(data.index)">Yes</button>
+        <button class="confirmation-button" (click)="ClosePopupHandler()">No</button>
+    </div>
+</div>
